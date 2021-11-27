@@ -22,6 +22,7 @@ public class Main {
         System.out.println("User5 Name =  " + user5.getName());
         System.out.println("User5 Id =  " + user5.getId());
         
+        System.out.println("User1 == User1 :  " + user1.equals(user1));
         System.out.println("User1 == User2 :  " + user1.equals(user2));
         System.out.println("User1 == User3 :  " + user1.equals(user3));
         System.out.println("User1 == User4 :  " + user1.equals(user4));
