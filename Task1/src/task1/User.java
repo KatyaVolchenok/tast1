@@ -55,8 +55,7 @@ public class User {
             this.isAdmin = isAdmin;
         } else {}
         
-     
-}
+    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
@@ -83,7 +82,6 @@ public class User {
         User user = (User) obj;
         return this.name.equals(user.name) && this.isAdmin == user.isAdmin;
     }
-    
     
     @Override
     public int hashCode() {
