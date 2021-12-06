@@ -32,7 +32,9 @@ public class Main {
         
        
         System.out.println("User2 hashCode = " + user2.hashCode());
+        System.out.println("User3 hashCode = " + user3.hashCode());
         System.out.println("User5 hashCode = " + user5.hashCode());
+        
         
     }
 }
