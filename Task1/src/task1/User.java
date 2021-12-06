@@ -70,6 +70,7 @@ public class User {
         return null;
     }
 
+    
     @Override
     public boolean equals(Object obj) {
            
@@ -85,7 +86,6 @@ public class User {
     
     @Override
     public int hashCode() {
-        
         int name = this.name.hashCode();
         int isAdmin = ((Boolean)this.isAdmin).hashCode();
         return super.hashCode();
