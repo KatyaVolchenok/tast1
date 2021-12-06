@@ -11,12 +11,19 @@ package task1;
  */
 public class Main {
     public static void main(String[] args) throws UserException, CloneNotSupportedException {
-        User user1 = new User(24, "Sergey", false);
-        User user2 = new User(33,"Alexsander", true);
+        try{
+       
+        User user1 = new User(33, "Sergey", false);
+        User user2 = new User(33,"Sergey", true);
         User user3 = new User(28,"Vladimir", false);
         User user4 = (User)user1.clone();
         User user5 = (User)user2.clone();
         
+        
+        System.out.println("User1 Name =  " + user1.getName());
+        System.out.println("User1 Id =  " + user1.getId());
+        System.out.println("User2 Name =  " + user2.getName());
+        System.out.println("User2 Id =  " + user2.getId());
         System.out.println("User4 Name =  " + user4.getName());
         System.out.println("User4 Id =  " + user4.getId());
         System.out.println("User5 Name =  " + user5.getName());
@@ -35,6 +42,12 @@ public class Main {
         System.out.println("User3 hashCode = " + user3.hashCode());
         System.out.println("User5 hashCode = " + user5.hashCode());
         
+       }catch(UserException e) {
+            System.out.println("Неверно указаны параметры");
+        }
+        catch (CloneNotSupportedException e) {
+            System.out.println("Клонирование не поддерживается");
+        }
         
     }
 }

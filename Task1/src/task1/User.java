@@ -18,7 +18,7 @@ public class User {
     private int id;
     private String name;
     private boolean isAdmin;
-    static ArrayList<Integer> baseId = new ArrayList<>();
+    static ArrayList<Integer> list = new ArrayList<>();
     
     public User() {
         
@@ -38,11 +38,11 @@ public class User {
     }
 
     public User(int id, String name, boolean isAdmin) throws UserException {
-        if(baseId.contains(id)){
+        if(list.contains(id)){
             throw new UserException();  
         } else {
             this.id = id;
-            baseId.add(id);
+            list.add(id);
         }
         
         if(name == null || name.trim().isEmpty()) {
@@ -50,11 +50,8 @@ public class User {
         } else {
             this.name = name;
         }
-        
-        if(isAdmin) {
             this.isAdmin = isAdmin;
-        } else {}
-        
+       
     }
 
     @Override
@@ -88,7 +85,7 @@ public class User {
     public int hashCode() {
         int name = this.name.hashCode();
         int isAdmin = ((Boolean)this.isAdmin).hashCode();
-        return super.hashCode();
+        return name + isAdmin;
     }
-
+  
 }
