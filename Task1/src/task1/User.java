@@ -85,9 +85,8 @@ public class User {
     
     @Override
     public int hashCode() {
-        int result =0;
-        int ad = (this.isAdmin == true) ? 1 : -1;
-        result = name.hashCode() + ad;
+        int name = this.name.hashCode();
+        int isAdmin = ((Boolean)this.isAdmin).hashCode();
         return super.hashCode();
     }
 
