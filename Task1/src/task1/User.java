@@ -6,8 +6,9 @@
 package task1;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
+
 
 /**
  *
@@ -17,7 +18,7 @@ public class User {
     private int id;
     private String name;
     private boolean isAdmin;
-    static ArrayList<Integer> baseId = new ArrayList<>();
+    static ArrayList<Integer> list = new ArrayList<>();
     
     public User() {
         
@@ -37,70 +38,54 @@ public class User {
     }
 
     public User(int id, String name, boolean isAdmin) throws UserException {
-        if(baseId.contains(id)){
+        if(list.contains(id)){
             throw new UserException();  
         } else {
             this.id = id;
-            baseId.add(id);
+            list.add(id);
         }
         
-        if(name == null || name.equals(" ")) {
+        if(name == null || name.trim().isEmpty()) {
             throw new UserException();
         } else {
             this.name = name;
         }
-        
-        if(isAdmin == true) {
             this.isAdmin = isAdmin;
-        } else {}
-        
-     
-}
+       
+    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        int newId = id;
-        newId = (int) Math.round(Math.random()*1000);
+        
+        int newId = (int) Math.round(Math.random()*1000);
             try {
                 return new User(newId, name, isAdmin);
             } catch (UserException ex) {
-               if( name == null || name.equals(" "))
+               if( name == null || name.trim().isEmpty())
                throw new CloneNotSupportedException();
             }    
         return null;
     }
 
-    @Override
-    public boolean equals(Object o) {
-           
-   if (this == o) return true;
-   if(o instanceof User) return false;
-
-   User user = (User) o;
-   if (!(isAdmin != user.isAdmin)) return false;
-   if (!(name.equals(user.name))) return false;
-   
-   return true;
-    }
     
+    @Override
+    public boolean equals(Object obj) {
+           
+   if(this == obj) {
+            return true;
+        }
+        if(obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        User user = (User) obj;
+        return this.name.equals(user.name) && this.isAdmin == user.isAdmin;
+    }
     
     @Override
     public int hashCode() {
-        int result = name == null ? 0 : name.hashCode();
-        int ad = isAdmin ? 1:0;
-        result = result + ad;
-   
-       return result;
+        int name = this.name.hashCode();
+        int isAdmin = ((Boolean)this.isAdmin).hashCode();
+        return name + isAdmin;
     }
-
-   
-
-    
-
-   
-    
-    
-    
-    
-    
+  
 }
